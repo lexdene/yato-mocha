@@ -1,0 +1,17 @@
+name: publish
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: git status
+      run: |
+        git log -1
+        git tag -l
+        git log --decorate --oneline -10
+    - name: git describe
+      run: |
+        git describe --long --tags --dirty
