@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-      fetch-depth: 5
-      fetch-tags: true
+      with:
+        fetch-depth: 5
+        fetch-tags: true
     - name: git status
       run: |
         git log -1
